@@ -69,7 +69,9 @@
   font-size: 12px;
   line-height: 1;
   position: relative;
-  z-index: 50
+  z-index: 50;
+  display: flex;
+  align-items: center;
 }
 
 .column-name__name {

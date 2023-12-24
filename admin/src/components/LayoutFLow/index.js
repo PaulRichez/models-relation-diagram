@@ -4,7 +4,6 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
 } from 'reactflow';
-
 import styled from 'styled-components';
 import 'reactflow/dist/style.css';
 
@@ -13,6 +12,7 @@ import TableNode from '../TableNode';
 import elkLayout from '../../utils/elkLayout';
 
 import { LoadingIndicatorPage } from "@strapi/helper-plugin";
+import { Markers } from '../markers';
 
 const nodeTypes = { table: TableNode };
 
@@ -49,7 +49,8 @@ const LayoutFlow = ({ models }) => {
 
   let view;
   if (models && models.length > 0) {
-    view =
+    view = <>
+      <Markers />
       <ReactFlow
         init
         nodes={nodes}
@@ -61,6 +62,7 @@ const LayoutFlow = ({ models }) => {
       >
         <ControlsStyled />
       </ReactFlow >
+    </>
 
   } else {
     view = <LoadingIndicatorPage />;

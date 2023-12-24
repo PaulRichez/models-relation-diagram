@@ -29,14 +29,20 @@ const elkLayout = async (models) => {
       const columnData = model.attributes[column];
       columnData.handleType = 'source';
       if (columnData.relation && columnData.relation !== undefined && columnData.relation !== 'morphToMany' && !columnData.inversedBy) {
-        edges.push({
+        const newEdge = {
           id: `${model.uid}-${column}-${columnData.target}`,
           type: "smoothstep",
           source: `${model.uid}`,
           target: `${columnData.target}`,
           sourceHandle: `${column}-right`,
           targetHandle: `${getTargetHandle(column, columnData, model)}-left`,
-        });
+          markerEnd: 'hasMany',
+          // markerStart: 'hasManyReversed',
+        }
+        if (columnData.relation == 'manyToMany') {
+          newEdge.markerStart = 'hasManyReversed';
+        }
+        edges.push(newEdge);
       }
       if (columnData.type == 'component') {
         console.log(column)
