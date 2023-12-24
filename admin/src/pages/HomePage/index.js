@@ -53,6 +53,7 @@ const HomePage = () => {
       if (config.defaultExcludeAdmin) {
         newOptions.models = newOptions.models.filter((model) => !model.uid.startsWith("admin::"));
         newOptions.models = newOptions.models.filter((model) => !model.uid.startsWith("strapi::"));
+        newOptions.models = newOptions.models.filter((model) => !model.uid.startsWith("plugin::content-releases."));
         newOptions.models = newOptions.models.filter((model) => model.uid != "webhook");
         newOptions.models = newOptions.models.filter((model) => model.uid != "plugin::i18n.locale");
       }
