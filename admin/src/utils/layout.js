@@ -1,4 +1,5 @@
 import elkLayout from "./layouts/elkLayout"
+import dagreLayout from "./layouts/dagreLayout"
 
 const createLayout = async (models, options) => {
   const nodes = [];
@@ -29,24 +30,34 @@ const createLayout = async (models, options) => {
             target: `${columnData.target}`,
             sourceHandle: `${column}-right`,
             targetHandle: `${getTargetHandle(column, columnData, model)}-left`,
-            markerEnd: 'hasMany',
-            // markerStart: 'hasManyReversed',
           }
-          if (columnData.relation == 'manyToMany') {
-            newEdge.markerStart = 'hasManyReversed';
+          if (!options.hideMarkers) {
+            if (columnData.relation == 'manyToMany') {
+              newEdge.markerStart = 'hasManyReversed';
+              newEdge.markerEnd = 'hasMany';
+            }
+            if (columnData.relation == 'oneToMany') {
+              newEdge.markerStart = 'hasManyReversed';
+            }
+            if (columnData.relation == 'manyToOne') {
+              newEdge.markerEnd = 'hasMany';
+            }
           }
           edges.push(newEdge);
         }
       }
       if (columnData.type == 'component') {
-        edges.push({
-          id: `${model.uid}-${column}-${columnData.component}`,
-          type: options.edgesType,
-          source: `${model.uid}`,
-          target: `${columnData.component}`,
-          sourceHandle: `${column}-right`,
-          targetHandle: `${getTargetHandle(column, columnData, model)}-left`,
-        });
+        if (models.map((m) => m.uid).includes(columnData.component)) {
+          edges.push({
+            id: `${model.uid}-${column}-${columnData.component}`,
+            type: options.edgesType,
+            source: `${model.uid}`,
+            target: `${columnData.component}`,
+            sourceHandle: `${column}-right`,
+            targetHandle: `${getTargetHandle(column, columnData, model)}-left`,
+            markerStart: columnData.repeatable ? 'hasManyReversed' : '',
+          });
+        }
       }
     });
     nodes.push(
@@ -57,9 +68,14 @@ const createLayout = async (models, options) => {
         data: { ...model },
       });
   });
-
-
-  return elkLayout(nodes, edges);
+  switch (options.layout) {
+    case 'dagre':
+      return dagreLayout(nodes, edges);
+    case 'elk':
+      return elkLayout(nodes, edges);
+    default:
+      return elkLayout(nodes, edges);
+  }
 }
 
 export default createLayout;

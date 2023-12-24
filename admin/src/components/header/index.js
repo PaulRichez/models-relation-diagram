@@ -35,12 +35,7 @@ export default function Header({ options, toggleOption, models }) {
         },
         {
           name: 'dagre',
-          disabled: true,
         },
-        {
-          name: 'horizontal',
-          disabled: true,
-        }
       ]
     },
     {

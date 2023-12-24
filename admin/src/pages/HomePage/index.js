@@ -18,12 +18,7 @@ import getTrad from "../../utils/getTrad";
 
 import { api } from "../../utils/api";
 
-import ReactFlow, {
-  Controls,
-  ReactFlowProvider,
-} from 'reactflow';
-import styled from 'styled-components';
-import 'reactflow/dist/style.css';
+import { ReactFlowProvider } from 'reactflow';
 
 import LayoutFlow from '../../components/LayoutFLow';
 import Header from '../../components/header';
@@ -32,6 +27,7 @@ const HomePage = () => {
   const { data, status } = useQuery([], () => api.getModels());
   const { formatMessage, formatDate } = useIntl();
   let models = [];
+  let config = {};
   const [modelsInit, setModelsInit] = useState(false);
   const [options, setOptions] = useState({
     edgesType: 'smoothstep',
@@ -47,13 +43,40 @@ const HomePage = () => {
 
   if (status === 'success') {
     models = data.data?.data;
-    console.log(modelsInit)
+    config = data.data?.config;
+    console.log(config)
     if (!modelsInit) {
       setModelsInit(true);
-      setOptions({
-        ...options,
-        models: models.map((model) => model.uid)
-      });
+      const newOptions = {
+        models: models
+      }
+      if (config.defaultExcludeAdmin) {
+        newOptions.models = newOptions.models.filter((model) => !model.uid.startsWith("admin::"));
+        newOptions.models = newOptions.models.filter((model) => !model.uid.startsWith("strapi::"));
+        newOptions.models = newOptions.models.filter((model) => model.uid != "webhook");
+        newOptions.models = newOptions.models.filter((model) => model.uid != "plugin::i18n.locale");
+      }
+      if (config.defaultHideUpload) {
+        newOptions.models = newOptions.models.filter((model) => model.uid != "plugin::upload.file");
+        newOptions.models = newOptions.models.filter((model) => model.uid != "plugin::upload.folder");
+      }
+      if (config.defaultExcludeComponents) {
+        newOptions.models = newOptions.models.filter((model) => model.modelType != "component");
+      }
+      if (config.defaultLayout) {
+        newOptions.layout = config.defaultLayout;
+      }
+      if (config.defaultEdgesType) {
+        newOptions.edgesType = config.defaultEdgesType;
+      }
+      if (config.hideMarkers)  {
+        newOptions.hideMarkers = config.hideMarkers;
+      }
+      newOptions.models = newOptions.models.map((model) => model.uid),
+        setOptions({
+          ...options,
+          ...newOptions,
+        });
     }
   }
 
