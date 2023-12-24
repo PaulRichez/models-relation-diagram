@@ -7,7 +7,7 @@ Entity Relationship Diagram => BETA Version
 
 Create a diagram of your tables
 
-![Alt text](images/v1.png)
+![Alt text](https://github.com/PaulRichez/models-relation-diagram/blob/master/images/v1.png?raw=true)
 
 ## Plugin Configurations
 ```js
