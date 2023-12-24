@@ -86,7 +86,7 @@ const HomePage = () => {
       <Layout>
         <>
           <HeaderLayout
-            title={formatMessage({ id: getTrad({ pluginId }), defaultMessage: 'Models relation diagram' })}
+            title={formatMessage({ id: getTrad("plugin.name"), defaultMessage: 'Models relation diagram' })}
             as="h2"
           />
         </>

@@ -1,4 +1,5 @@
 {
+  "plugin.name": "Models relation diagram",
   "options_layout": "Layout",
   "options_edgesType": "Edges type",
   "options_models": "Models",

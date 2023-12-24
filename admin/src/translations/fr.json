@@ -1,4 +1,5 @@
 {
+  "plugin.name": "Diagramme de relations",
   "options_layout": "Layout",
   "options_edgesType": "Type de ligne",
   "options_models": "Modeles",
