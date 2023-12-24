@@ -1,0 +1,15 @@
+#header {
+  padding-block: 5px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  & > div:not(:last-child) {
+    margin-right: 20px;
+  }
+  & > div {
+    width: 120px;
+  }
+}

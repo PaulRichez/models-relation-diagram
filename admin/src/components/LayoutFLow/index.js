@@ -9,7 +9,7 @@ import 'reactflow/dist/style.css';
 
 import TableNode from '../TableNode';
 
-import elkLayout from '../../utils/elkLayout';
+import createLayout  from '../../utils/layout';
 
 import { LoadingIndicatorPage } from "@strapi/helper-plugin";
 import { Markers } from '../markers';
@@ -33,19 +33,18 @@ const ControlsStyled = styled(Controls)`
 `;
 
 
-const LayoutFlow = ({ models }) => {
+const LayoutFlow = ({ models, options }) => {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   useEffect(() => {
     const layout = async () => {
-      const elkGraph = await elkLayout(models);
-      console.log(elkGraph)
-      setNodes(elkGraph.nodes);
-      setEdges(elkGraph.edges);
+      const myLayout = await createLayout(models, options);
+      setNodes(myLayout.nodes);
+      setEdges(myLayout.edges);
     };
     layout();
   }
-    , [models]);
+    , [models, options]);
 
   let view;
   if (models && models.length > 0) {
