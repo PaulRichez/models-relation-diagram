@@ -1,9 +1,9 @@
 import React from "react";
-import { Box, MultiSelect, MultiSelectOption, SingleSelect, SingleSelectOption } from "@strapi/design-system";
+import { Box, MultiSelect, MultiSelectOption, SingleSelect, SingleSelectOption, Button } from "@strapi/design-system";
 import "./main.css";
 import { useIntl } from 'react-intl';
 import getTrad from "../../utils/getTrad";
-export default function Header({ options, toggleOption }) {
+export default function Header({ options, toggleOption, models }) {
   // options.onChange
 
   const { formatMessage, formatDate } = useIntl();
@@ -14,7 +14,6 @@ export default function Header({ options, toggleOption }) {
       values: [
         {
           name: 'straight',
-
         },
         {
           name: 'step',
@@ -43,6 +42,11 @@ export default function Header({ options, toggleOption }) {
           disabled: true,
         }
       ]
+    },
+    {
+      name: 'models',
+      type: 'multiSelect',
+      values: models.map((model) => ({ name: model.uid }))
     }
   ]
   const elements = [];
@@ -70,7 +74,7 @@ export default function Header({ options, toggleOption }) {
           label={formatMessage({ id: getTrad('options_' + field.name), defaultMessage: field.name })}
           name={field.name}
           onChange={(type) => toggleOption(field.name, type)}
-          value={options[field.name]}
+          value={options[field.name]  }
         >
           {field.values.map((value) => (
             <MultiSelectOption key={value.name} value={value.name} disabled={value.disabled}>

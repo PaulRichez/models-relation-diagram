@@ -1,4 +1,6 @@
 {
   "options_layout": "Layout",
-  "options_edgesType": "Edges type"
+  "options_edgesType": "Edges type",
+  "actions_donwload": "Download",
+  "Draft_and_publish": "Draft and publish"
 }

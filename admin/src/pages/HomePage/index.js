@@ -32,19 +32,29 @@ const HomePage = () => {
   const { data, status } = useQuery([], () => api.getModels());
   const { formatMessage, formatDate } = useIntl();
   let models = [];
-  if (status === 'success') {
-    models = data.data?.data;
-  }
-
+  const [modelsInit, setModelsInit] = useState(false);
   const [options, setOptions] = useState({
     edgesType: 'smoothstep',
     layout: 'elk',
+    models: []
   });
   function toggleOption(optionName, optionValue = null) {
     setOptions({
       ...options,
       [optionName]: optionValue || !options[optionName],
     });
+  }
+
+  if (status === 'success') {
+    models = data.data?.data;
+    console.log(modelsInit)
+    if (!modelsInit) {
+      setModelsInit(true);
+      setOptions({
+        ...options,
+        models: models.map((model) => model.uid)
+      });
+    }
   }
 
   return (
@@ -57,7 +67,7 @@ const HomePage = () => {
           />
         </>
         <ContentLayout>
-          <Header options={options} toggleOption={toggleOption} />
+          <Header options={options} toggleOption={toggleOption} models={models} />
           <Box background="neutral0" hasRadius style={{ height: "calc(100vh - 280px)", width: "100%" }}>
             <ReactFlowProvider>
               <LayoutFlow models={models} options={options} />

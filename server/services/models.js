@@ -15,6 +15,7 @@ module.exports = ({ strapi }) => ({
       uid: m.uid,
       modelType: m.modelType,
       kind: m.kind,
+      options: m.options,
     }));
   }
 });

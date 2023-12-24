@@ -12,6 +12,12 @@
   position: relative;
   text-align: center;
   background-color: lightblue;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  & > div {
+    padding-right: 8px;
+  }
 }
 
 .table__columns {
@@ -72,14 +78,24 @@
   z-index: 50;
   display: flex;
   align-items: center;
+  padding-inline: 10px;
 }
 
 .column-name__name {
-  margin-right: 16px
+  margin-right: 16px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .column-name__type {
-  color: #bbb
+  color: #bbb;
+  display: flex;
+  align-items: flex-start;
+}
+.column-name__key {
+  padding-left: 10px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .column-name__description {

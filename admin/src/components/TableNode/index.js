@@ -1,15 +1,21 @@
 import React from 'react';
 import { Handle, Position } from 'reactflow';
 import './main.css';
-import { KeyIcon } from '../keyIcon';
+
+import { useIntl } from 'react-intl';
+import getTrad from "../../utils/getTrad";
+
+import { Uid, FeatherSquare } from '@strapi/icons';
 
 function TableNode({ data }) {
+  const { formatMessage, formatDate } = useIntl();
   return (
     <div className="table">
       <div
         style={{ backgroundColor: data.schemaColor }}
         className="table__name">
-        {data.modelName ? data.modelName : data.uid}
+        <div> {data.uid}</div>
+        {data.options?.draftAndPublish && <div className="table__draft-and-publish" title={formatMessage({ id: getTrad('Draft_and_publish'), defaultMessage: 'Draft and publish' })}><FeatherSquare /></div>}
       </div>
       <div className="table__columns">
         {Object.keys(data.attributes).map((column, index) => (
@@ -34,11 +40,13 @@ function TableNode({ data }) {
 
             <div className="column-name__inner">
               <div className="column-name__name">
-                {column == 'id' && <KeyIcon />}
                 {column}
               </div>
               <div className="column-name__type">
                 {data.attributes[column].type}
+              </div>
+              <div className="column-name__key">
+                {column == 'id' && <Uid />}
               </div>
             </div>
           </div>

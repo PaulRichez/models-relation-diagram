@@ -9,7 +9,7 @@ import 'reactflow/dist/style.css';
 
 import TableNode from '../TableNode';
 
-import createLayout  from '../../utils/layout';
+import createLayout from '../../utils/layout';
 
 import { LoadingIndicatorPage } from "@strapi/helper-plugin";
 import { Markers } from '../markers';
@@ -44,10 +44,10 @@ const LayoutFlow = ({ models, options }) => {
     };
     layout();
   }
-    , [models, options]);
+    , [options]);
 
   let view;
-  if (models && models.length > 0) {
+  if (options.models && models.length > 0) {
     view = <>
       <Markers />
       <ReactFlow
