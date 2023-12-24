@@ -1,6 +1,6 @@
 {
   "options_layout": "Layout",
-  "options_edgesType": "Edges type",
-   "actions_donwload": "Download",
-   "Draft_and_publish": "Draft_and_publish"
+  "options_edgesType": "Type de ligne",
+  "options_models": "Modeles",
+  "Draft_and_publish": "Brouillon"
 }
