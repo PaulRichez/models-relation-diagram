@@ -3,7 +3,7 @@
 Entity Relationship Diagram => BETA Version
 
 [![Downloads](https://img.shields.io/npm/dm/strapi4-models-relation-diagram?style=for-the-badge)](https://www.npmjs.com/package/strapi4-models-relation-diagram)
-[![Install size](https://img.shields.io/npm/l/strapi-plugin-server-route-permission?style=for-the-badge)](https://github.com/PaulRichez/smodels-relation-diagram/blob/master/Licence)
+[![Install size](https://img.shields.io/npm/l/strapi-plugin-server-route-permission?style=for-the-badge)](https://github.com/PaulRichez/models-relation-diagram/blob/master/Licence)
 
 Create a diagram of every strapi collections and components with fields and relation.
 
