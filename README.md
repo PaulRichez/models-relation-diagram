@@ -5,6 +5,8 @@ Entity Relationship Diagram => BETA Version
 [![Downloads](https://img.shields.io/npm/dm/strapi4-models-relation-diagram?style=for-the-badge)](https://www.npmjs.com/package/strapi4-models-relation-diagram)
 [![Install size](https://img.shields.io/npm/l/strapi-plugin-server-route-permission?style=for-the-badge)](https://github.com/PaulRichez/models-relation-diagram/blob/master/Licence)
 
+
+## 🚀 &nbsp; _Overview_
 Create a diagram of every strapi collections and components with fields and relation.
 
 
@@ -14,6 +16,14 @@ Possibility to choose the type of edge.
 
 
 ![Alt text](https://github.com/PaulRichez/models-relation-diagram/blob/master/images/v1.png?raw=true)
+
+## ✨ &nbsp; _Getting Started_
+Minimum version strapi: 4.12.0  
+```
+npm i strapi4-models-relation-diagram
+npm run build
+npm run develop
+```
 
 ## Plugin Configurations
 ```js
