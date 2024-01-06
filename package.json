@@ -1,6 +1,6 @@
 {
   "name": "strapi4-models-relation-diagram",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "This is the description of the plugin.",
   "strapi": {
     "name": "models-relation-diagram",
@@ -29,16 +29,17 @@
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-router-dom": "^5.2.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "@strapi/strapi": "^4.3.6"
   },
   "author": {
     "name": "Paul Richez",
     "url": "https://paulrichez.fr"
   },
-  "homepage": "https://https://github.com/PaulRichez/models-relation-diagram#readme",
+  "homepage": "https://github.com/PaulRichez/models-relation-diagram#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://https://github.com/PaulRichez/models-relation-diagram.git"
+    "url": "https://github.com/PaulRichez/models-relation-diagram"
   },
   "maintainers": [
     {

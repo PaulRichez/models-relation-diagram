@@ -3,9 +3,15 @@
 Entity Relationship Diagram => BETA Version
 
 [![Downloads](https://img.shields.io/npm/dm/strapi4-models-relation-diagram?style=for-the-badge)](https://www.npmjs.com/package/strapi4-models-relation-diagram)
-[![Install size](https://img.shields.io/npm/l/strapi-plugin-server-route-permission?style=for-the-badge)](https://github.com/PaulRichez/strapi4-plugin-route-permission/blob/main/Licence)
+[![Install size](https://img.shields.io/npm/l/strapi-plugin-server-route-permission?style=for-the-badge)](https://github.com/PaulRichez/smodels-relation-diagram/blob/main/Licence)
 
-Create a diagram of your tables
+Create a diagram of every strapi collections and components with fields and relation.
+
+
+Possibility of displaying or not all collections and components.  
+Possibility to choose the layout among Elk and dagre.  
+Possibility to choose the type of edge.  
+
 
 ![Alt text](https://github.com/PaulRichez/models-relation-diagram/blob/master/images/v1.png?raw=true)
 
